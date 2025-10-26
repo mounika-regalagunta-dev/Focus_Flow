@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Focus Flow - Boost Your Productivity</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Landing Page -->
+    <div id="landingPage" class="landing-page">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <i class="fas fa-brain"></i>
+                    <span>Focus Flow</span>
+                </div>
+                <div class="nav-buttons">
+                    <button class="btn-secondary" onclick="showLogin()">Login</button>
+                    <button class="btn-primary" onclick="showRegister()">Sign Up Free</button>
+                </div>
+            </div>
+        </nav>
+
+        <section class="hero">
+            <div class="hero-content">
+                <h1 class="animate-fade-in">Master Your Time, <span class="highlight">Amplify Your Focus</span></h1>
+                <p class="subtitle animate-fade-in-delay">Combine powerful task management with the Pomodoro technique to boost productivity and achieve your goals</p>
+                <button class="btn-hero" onclick="showRegister()">
+                    Get Started Free <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+            <div class="hero-image">
+                <div class="floating-card card-1">
+                    <i class="fas fa-tasks"></i>
+                    <span>Task Management</span>
+                </div>
+                <div class="floating-card card-2">
+                    <i class="fas fa-clock"></i>
+                    <span>Pomodoro Timer</span>
+                </div>
+                <div class="floating-card card-3">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Progress Tracking</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="features">
+            <h2>Everything You Need to Stay Focused</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-list-check"></i>
+                    </div>
+                    <h3>Smart Task Management</h3>
+                    <p>Organize, prioritize, and track your tasks with an intuitive interface</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-stopwatch"></i>
+                    </div>
+                    <h3>Pomodoro Timer</h3>
+                    <p>Stay focused with customizable work sessions and break intervals</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3>Productivity Insights</h3>
+                    <p>Track your progress and optimize your workflow with detailed stats</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                    <h3>Smart Notifications</h3>
+                    <p>Never miss a break or deadline with timely reminders</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>Beautiful Design</h3>
+                    <p>Enjoy a clean, modern interface that makes work feel effortless</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Works Everywhere</h3>
+                    <p>Access your tasks and timer from any device, anywhere</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('loginModal')">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-header">
+                <h2>Welcome Back!</h2>
+                <p>Login to continue your productivity journey</p>
+            </div>
+            <form onsubmit="handleLogin(event)" class="auth-form">
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" required placeholder="your@email.com">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" required placeholder="Enter your password">
+                </div>
+                <button type="submit" class="btn-primary btn-full">Login</button>
+                <div class="form-footer">
+                    <p>Don't have an account? <a href="#" onclick="showRegister(); return false;">Sign up</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('registerModal')">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-header">
+                <h2>Create Account</h2>
+                <p>Start your journey to better productivity</p>
+            </div>
+            <form onsubmit="handleRegister(event)" class="auth-form">
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" required placeholder="Your name">
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" required placeholder="your@email.com">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" required placeholder="Create a password">
+                </div>
+                <button type="submit" class="btn-primary btn-full">Create Account</button>
+                <div class="form-footer">
+                    <p>Already have an account? <a href="#" onclick="showLogin(); return false;">Login</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Dashboard -->
+    <div id="dashboard" class="dashboard" style="display: none;">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <i class="fas fa-brain"></i>
+                    <span>Focus Flow</span>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active" onclick="showSection('dashboardSection')">
+                    <i class="fas fa-home"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#" class="nav-item" onclick="showSection('tasksSection')">
+                    <i class="fas fa-tasks"></i>
+                    <span>Tasks</span>
+                </a>
+                <a href="#" class="nav-item" onclick="showSection('timerSection')">
+                    <i class="fas fa-clock"></i>
+                    <span>Pomodoro</span>
+                </a>
+                <a href="#" class="nav-item" onclick="showSection('statsSection')">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Statistics</span>
+                </a>
+                <a href="#" class="nav-item" onclick="showSection('settingsSection')">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <button class="btn-logout" onclick="handleLogout()">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Dashboard Section -->
+            <section id="dashboardSection" class="content-section">
+                <div class="section-header">
+                    <div>
+                        <h1>Dashboard</h1>
+                        <p>Welcome back! Here's your productivity overview</p>
+                    </div>
+                </div>
+
+                <div class="stats-cards">
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                            <i class="fas fa-tasks"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="totalTasks">0</h3>
+                            <p>Total Tasks</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="completedTasks">0</h3>
+                            <p>Completed</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="totalPomodoros">0</h3>
+                            <p>Pomodoros</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+                            <i class="fas fa-fire"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="focusHours">0</h3>
+                            <p>Focus Hours</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-grid">
+                    <div class="dashboard-card">
+                        <div class="card-header">
+                            <h3>Today's Tasks</h3>
+                            <button class="btn-icon" onclick="showSection('tasksSection')">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                        <div id="todayTasksList" class="task-list-preview"></div>
+                    </div>
+
+                    <div class="dashboard-card">
+                        <div class="card-header">
+                            <h3>Quick Timer</h3>
+                        </div>
+                        <div class="quick-timer">
+                            <div class="timer-display-small">
+                                <span id="quickTimerDisplay">25:00</span>
+                            </div>
+                            <button class="btn-primary" onclick="showSection('timerSection')">
+                                Start Pomodoro
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tasks Section -->
+            <section id="tasksSection" class="content-section" style="display: none;">
+                <div class="section-header">
+                    <div>
+                        <h1>Task Management</h1>
+                        <p>Organize and prioritize your work</p>
+                    </div>
+                    <button class="btn-primary" onclick="showAddTaskModal()">
+                        <i class="fas fa-plus"></i> Add Task
+                    </button>
+                </div>
+
+                <div class="tasks-filters">
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" data-filter="all" onclick="filterTasks('all')">All Tasks</button>
+                        <button class="filter-btn" data-filter="pending" onclick="filterTasks('pending')">Pending</button>
+                        <button class="filter-btn" data-filter="completed" onclick="filterTasks('completed')">Completed</button>
+                    </div>
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search tasks..." oninput="searchTasks(this.value)">
+                    </div>
+                </div>
+
+                <div id="tasksList" class="tasks-grid"></div>
+            </section>
+
+            <!-- Timer Section -->
+            <section id="timerSection" class="content-section" style="display: none;">
+                <div class="section-header">
+                    <div>
+                        <h1>Pomodoro Timer</h1>
+                        <p>Stay focused with time-tested productivity technique</p>
+                    </div>
+                </div>
+
+                <div class="timer-container">
+                    <div class="timer-modes">
+                        <button class="mode-btn active" data-mode="work" onclick="switchMode('work')">Work</button>
+                        <button class="mode-btn" data-mode="shortBreak" onclick="switchMode('shortBreak')">Short Break</button>
+                        <button class="mode-btn" data-mode="longBreak" onclick="switchMode('longBreak')">Long Break</button>
+                    </div>
+
+                    <div class="timer-circle">
+                        <svg class="timer-svg" viewBox="0 0 300 300">
+                            <circle class="timer-circle-bg" cx="150" cy="150" r="140"></circle>
+                            <circle class="timer-circle-progress" id="timerProgress" cx="150" cy="150" r="140"></circle>
+                        </svg>
+                        <div class="timer-display">
+                            <span id="timerDisplay">25:00</span>
+                            <p id="timerMode">Focus Time</p>
+                        </div>
+                    </div>
+
+                    <div class="timer-controls">
+                        <button class="btn-timer" id="startBtn" onclick="startTimer()">
+                            <i class="fas fa-play"></i> Start
+                        </button>
+                        <button class="btn-timer-secondary" id="pauseBtn" onclick="pauseTimer()" style="display: none;">
+                            <i class="fas fa-pause"></i> Pause
+                        </button>
+                        <button class="btn-timer-secondary" onclick="resetTimer()">
+                            <i class="fas fa-redo"></i> Reset
+                        </button>
+                    </div>
+
+                    <div class="timer-stats">
+                        <div class="timer-stat-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Sessions Today: <strong id="sessionsToday">0</strong></span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Statistics Section -->
+            <section id="statsSection" class="content-section" style="display: none;">
+                <div class="section-header">
+                    <div>
+                        <h1>Statistics</h1>
+                        <p>Track your productivity journey</p>
+                    </div>
+                </div>
+
+                <div class="stats-overview">
+                    <div class="stats-card-large">
+                        <h3>This Week's Progress</h3>
+                        <div class="week-chart">
+                            <div class="chart-bars" id="weekChart"></div>
+                        </div>
+                    </div>
+
+                    <div class="stats-grid">
+                        <div class="stat-box">
+                            <div class="stat-box-header">
+                                <i class="fas fa-trophy"></i>
+                                <h4>Total Completed</h4>
+                            </div>
+                            <p class="stat-number" id="statsCompleted">0</p>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-box-header">
+                                <i class="fas fa-clock"></i>
+                                <h4>Total Focus Time</h4>
+                            </div>
+                            <p class="stat-number" id="statsFocusTime">0h</p>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-box-header">
+                                <i class="fas fa-fire"></i>
+                                <h4>Current Streak</h4>
+                            </div>
+                            <p class="stat-number" id="statsStreak">0</p>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-box-header">
+                                <i class="fas fa-chart-line"></i>
+                                <h4>Productivity Score</h4>
+                            </div>
+                            <p class="stat-number" id="statsScore">0%</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Settings Section -->
+            <section id="settingsSection" class="content-section" style="display: none;">
+                <div class="section-header">
+                    <div>
+                        <h1>Settings</h1>
+                        <p>Customize your Focus Flow experience</p>
+                    </div>
+                </div>
+
+                <div class="settings-container">
+                    <div class="settings-card">
+                        <h3>Timer Settings</h3>
+                        <div class="setting-item">
+                            <label>Work Duration (minutes)</label>
+                            <input type="number" id="workDuration" value="25" min="1" max="60" onchange="saveSettings()">
+                        </div>
+                        <div class="setting-item">
+                            <label>Short Break (minutes)</label>
+                            <input type="number" id="shortBreakDuration" value="5" min="1" max="30" onchange="saveSettings()">
+                        </div>
+                        <div class="setting-item">
+                            <label>Long Break (minutes)</label>
+                            <input type="number" id="longBreakDuration" value="15" min="1" max="60" onchange="saveSettings()">
+                        </div>
+                    </div>
+
+                    <div class="settings-card">
+                        <h3>Notifications</h3>
+                        <div class="setting-item">
+                            <label>
+                                <input type="checkbox" id="notifBreaks" checked onchange="saveSettings()">
+                                Notify when break starts
+                            </label>
+                        </div>
+                        <div class="setting-item">
+                            <label>
+                                <input type="checkbox" id="notifTasks" checked onchange="saveSettings()">
+                                Task deadline reminders
+                            </label>
+                        </div>
+                        <div class="setting-item">
+                            <label>
+                                <input type="checkbox" id="notifSounds" checked onchange="saveSettings()">
+                                Play sound notifications
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Add Task Modal -->
+    <div id="addTaskModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('addTaskModal')">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-header">
+                <h2>Add New Task</h2>
+            </div>
+            <form onsubmit="handleAddTask(event)" class="task-form">
+                <div class="form-group">
+                    <label>Task Title</label>
+                    <input type="text" id="taskTitle" required placeholder="What needs to be done?">
+                </div>
+                <div class="form-group">
+                    <label>Category</label>
+                    <select id="taskCategory">
+                        <option value="work">Work</option>
+                        <option value="personal">Personal</option>
+                        <option value="study">Study</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Priority</label>
+                    <select id="taskPriority">
+                        <option value="low">Low</option>
+                        <option value="medium">Medium</option>
+                        <option value="high">High</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Due Date</label>
+                    <input type="date" id="taskDueDate">
+                </div>
+                <button type="submit" class="btn-primary btn-full">Add Task</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
